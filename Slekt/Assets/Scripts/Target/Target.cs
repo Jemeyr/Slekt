@@ -1,37 +1,19 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-
 
 public class Target : MonoBehaviour {
 
-
+	//contemplating removing these and just making it an interface
 	protected bool isSelected = false;
 	protected Selector selector;
 
 
-	public virtual void Select(Selector s){
-		Debug.LogError("Please create a subclass of Target");
-		isSelected = true;
-		selector = s;
-	}
+	public virtual void Select(Selector s){}
 
-	public virtual void Deselect(){
-		Debug.LogError("Please create a subclass of Target");
-		isSelected = false;
-		selector = null;
-	}
+	public virtual void Deselect(){}
 
-	public virtual void Hover(){
-		Debug.LogError("Please create a subclass of Target");
-	}
-
-
-	public virtual void Unhover(){
-		Debug.LogError("Please create a subclass of Target");
-	}
-
-
+	public virtual void Hover(){}
+	
+	public virtual void Unhover(){}
 
 }
 

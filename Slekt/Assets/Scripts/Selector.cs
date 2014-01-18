@@ -15,6 +15,7 @@ public class Selector : MonoBehaviour {
 
 	void Awake () {
 		targets = GameObject.FindGameObjectsWithTag("Target");
+		Debug.Log (targets.Length);
 	}
 	
 	void Update () {
@@ -60,8 +61,10 @@ public class Selector : MonoBehaviour {
 			
 			if(t != null){
 				if(Input.GetMouseButtonDown(0)){
-					t.Select(this);
+					//isTalking should be something else I think. Maybe stick it in a player state and give the
+					// selector ability to flip it at will?
 					isTalking = true;
+					t.Select(this);
 				}
 				else
 				{
