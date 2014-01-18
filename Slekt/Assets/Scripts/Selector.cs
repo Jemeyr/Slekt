@@ -60,7 +60,7 @@ public class Selector : MonoBehaviour {
 			
 			if(t != null){
 				if(Input.GetMouseButtonDown(0)){
-					t.Activate(this);
+					t.Select(this);
 					isTalking = true;
 				}
 				else
@@ -72,4 +72,10 @@ public class Selector : MonoBehaviour {
 		}
 
 	}
+
+	public void Deselect(){
+		isTalking = false;
+		hilighted.GetComponent<Target>().Deselect();
+	}
+
 }
