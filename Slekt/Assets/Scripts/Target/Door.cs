@@ -10,7 +10,8 @@ public class Door : Target {
 	public bool isMoving = false;
 	public bool opening = true;
 
-	public float targetHeight;
+	public float moveHeight = 4.0f;
+	private float targetHeight;
 
 	void Awake(){
 		renderer.material = standardMaterial;
@@ -51,10 +52,10 @@ public class Door : Target {
 			isMoving = true;
 
 			if(opening){
-				targetHeight = transform.position.y + 8.0f;
+				targetHeight = transform.position.y + moveHeight;
 			}
 			else{
-				targetHeight = transform.position.y - 8.0f;
+				targetHeight = transform.position.y - moveHeight;
 			}
 		}
 

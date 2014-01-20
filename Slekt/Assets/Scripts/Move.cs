@@ -55,7 +55,7 @@ public class Move : MonoBehaviour {
 			controller.Move(transform.right * speed * Input.GetAxis("Horizontal"));
 		}
 
-		Debug.DrawLine(transform.position, transform.position + 10.0f * facing, Color.cyan, 0.5f, false);
+		//Debug.DrawLine(transform.position, transform.position + 10.0f * facing, Color.cyan, 0.5f, false);
 
 		//componentwise rotation
 		Quaternion yRot = Quaternion.Euler(0, Input.GetAxis("Mouse X"), 0);

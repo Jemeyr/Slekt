@@ -1199,7 +1199,7 @@ MonoBehaviour:
   player: {fileID: 860000662}
   faceFactor: 1
   distance: 8
-  height: 2
+  height: 4
   rotationDamping: .25
   heightDamping: .25
 --- !u!1 &646075013
@@ -4121,7 +4121,7 @@ MonoBehaviour:
   hoveredMaterial: {fileID: 2100000, guid: 54f27ff409b9da14bb153e5969965242, type: 2}
   isMoving: 0
   opening: 1
-  targetHeight: 0
+  moveHeight: 4
 --- !u!23 &1782533339
 Renderer:
   m_ObjectHideFlags: 0

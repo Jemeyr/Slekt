@@ -12,9 +12,15 @@ public class Selector : MonoBehaviour {
 
 	public bool isTalking = false;
 
+	private Move move;
 
 	void Awake () {
 		targets = GameObject.FindGameObjectsWithTag("Target");
+
+		move = transform.GetComponentInChildren<Move>();
+
+		Debug.Log (move);
+
 		Debug.Log (targets.Length);
 	}
 	
@@ -23,22 +29,30 @@ public class Selector : MonoBehaviour {
 		var nearTargets = new Dictionary<GameObject, float>();
 		GameObject hovered = null;
 		
-		
+
+		//create a dict of close targets
 		foreach(var targ in targets){
 			float dist = Vector3.Distance (targ.transform.position, transform.position);
 			if(dist < TargetRange){
 				nearTargets.Add(targ, dist);
+				Debug.DrawLine(transform.position,targ.transform.position, Color.blue);
 			}
 		}
 		
 		float nearest = float.MaxValue;
 
+		//TODO: replace this with a weighted value of val and closeness?
+
+		Debug.DrawLine(transform.position, transform.position + move.GetFacing() * TargetRange ,Color.red);
+		
+		//find closest target
 		if(nearTargets.Count > 0){
 
 			foreach(var targ in nearTargets){
 				Vector3 dir = Vector3.Normalize(targ.Key.transform.position - transform.position);
-				float testVal = Vector3.Dot(dir, transform.forward);
-				
+				//float testVal = Vector3.Dot(dir, transform.forward);
+				float testVal = Vector3.Dot(dir, move.GetFacing());
+
 				if (testVal > MinimumValue && targ.Value < nearest){
 					nearest = targ.Value;
 					hovered = targ.Key;
