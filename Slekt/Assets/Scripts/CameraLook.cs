@@ -8,6 +8,8 @@ public class CameraLook : MonoBehaviour {
 
 	private Move move;
 
+	public float faceFactor;
+
 	public float distance;
 	public float height;
 
@@ -38,16 +40,11 @@ public class CameraLook : MonoBehaviour {
 
 		Quaternion rotate = Quaternion.Euler(0, currRotation, 0);
 
-		
-		if(Input.GetKeyDown(KeyCode.P)){
-			Debug.Log(transform.position.y + " -> " + currHeight + " -> " + targetHeight);
-		}
-
 
 		transform.position = player.transform.position + distance * (rotate * -Vector3.forward);
-		transform.position += currHeight * Vector3.up;
+		transform.position += currHeight * Vector3.up - faceFactor * facing;
 
-		transform.LookAt(player.transform.position + facing);
+		transform.LookAt(player.transform.position + faceFactor * facing);
 
 	}
 }

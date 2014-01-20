@@ -1197,6 +1197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 860000662}
+  faceFactor: 1
   distance: 8
   height: 2
   rotationDamping: .25
@@ -1815,6 +1816,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: .25
   rotate: .75
+  altitudeLimitDegrees: 60
 --- !u!23 &860000666
 Renderer:
   m_ObjectHideFlags: 0
