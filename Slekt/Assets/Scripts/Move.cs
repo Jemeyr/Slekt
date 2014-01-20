@@ -9,9 +9,13 @@ public class Move : MonoBehaviour {
 	private CharacterController controller;
 	private Selector selector;
 
+	private Vector3 facing;
+
 	void Awake () {
 		controller = GetComponent<CharacterController>();		
 		selector = GetComponent<Selector>();
+
+		facing = transform.forward;
 	}
 	
 	
@@ -43,7 +47,17 @@ public class Move : MonoBehaviour {
 			controller.Move(transform.right * speed * Input.GetAxis("Horizontal"));
 		}
 
-		
-		transform.Rotate (new Vector3 (0, Input.GetAxis("Mouse X") * rotate, 0), Space.World);
+		Debug.DrawLine(transform.position, transform.position + 10.0f * facing, Color.cyan, 0.5f, false);
+
+		facing = Quaternion.Euler(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0) * facing;
+
+		//rotate to look at it without the y axis
+		transform.LookAt(transform.position + new Vector3(facing.x, 0, facing.z));
+
 	}
+
+	public Vector3 GetFacing(){
+		return facing;
+	}
+
 }
