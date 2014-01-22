@@ -9,13 +9,13 @@ public class Move : MonoBehaviour {
 	public float altitudeLimitDegrees = 60.0f;//60 degrees up down is max
 	private float altitudeLimit;
 
-	private CharacterController controller;
+	//private CharacterController controller;
 	private Selector selector;
 
 	private Vector3 facing;
 
 	void Awake () {
-		controller = GetComponent<CharacterController>();		
+		//controller = GetComponent<CharacterController>();		
 		selector = GetComponent<Selector>();
 
 		facing = transform.forward;
@@ -27,8 +27,6 @@ public class Move : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-
 
 		//no moving while talking
 		if(selector.isTalking){
@@ -44,14 +42,16 @@ public class Move : MonoBehaviour {
 			Screen.showCursor = true;
 		}
 
-		
+		//calculate next position
+		Vector3 nextPosition = transform.position;
+
 		if (Input.GetAxis("Vertical") != 0)
 		{
-			controller.Move(transform.forward * speed * Input.GetAxis("Vertical"));
+			nextPosition += transform.forward * speed * Input.GetAxis("Vertical");
 		}
 		if (Input.GetAxis("Horizontal") != 0)
 		{
-			controller.Move(transform.right * speed * Input.GetAxis("Horizontal"));
+			nextPosition += transform.right * speed * Input.GetAxis("Horizontal");
 		}
 
 
@@ -74,10 +74,10 @@ public class Move : MonoBehaviour {
 		//set facing
 		facing = nextFacing;
 
-
+			
 		//rotate to look at it without the y axis
-		transform.LookAt(transform.position + new Vector3(facing.x, 0, facing.z));
-
+		rigidbody.MovePosition(nextPosition);
+		rigidbody.MoveRotation(Quaternion.LookRotation(new Vector3(facing.x, 0, facing.z)));
 	}
 
 	public Vector3 GetFacing(){

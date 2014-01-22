@@ -1765,9 +1765,9 @@ GameObject:
   - 33: {fileID: 860000668}
   - 136: {fileID: 860000667}
   - 23: {fileID: 860000666}
-  - 143: {fileID: 860000664}
   - 114: {fileID: 860000665}
   - 114: {fileID: 860000663}
+  - 54: {fileID: 860000670}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1788,20 +1788,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetRange: 15
   isTalking: 0
---- !u!143 &860000664
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 860000662}
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: .500000119
-  m_SlopeLimit: 45
-  m_StepOffset: .300000012
-  m_SkinWidth: .0799999982
-  m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &860000665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1869,6 +1855,21 @@ Transform:
   m_Children:
   - {fileID: 1869815389}
   m_Father: {fileID: 0}
+--- !u!54 &860000670
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 860000662}
+  serializedVersion: 2
+  m_Mass: 1.00000001e-07
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &872209841
 Prefab:
   m_ObjectHideFlags: 0
@@ -4178,11 +4179,11 @@ Rigidbody:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1782533337}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 1e+09
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
