@@ -19,7 +19,8 @@ public class Move : MonoBehaviour {
 		selector = GetComponent<Selector>();
 
 		facing = transform.forward;
-		altitudeLimit = Mathf.Deg2Rad * altitudeLimitDegrees;
+
+		altitudeLimit = Mathf.Sin(Mathf.Deg2Rad * altitudeLimitDegrees);
 	}
 	
 	
@@ -27,8 +28,6 @@ public class Move : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		//TODO: remove after adjusting?
-		altitudeLimit = Mathf.Sin(Mathf.Deg2Rad * altitudeLimitDegrees);
 
 
 		//no moving while talking
@@ -55,7 +54,7 @@ public class Move : MonoBehaviour {
 			controller.Move(transform.right * speed * Input.GetAxis("Horizontal"));
 		}
 
-		//Debug.DrawLine(transform.position, transform.position + 10.0f * facing, Color.cyan, 0.5f, false);
+
 
 		//componentwise rotation
 		Quaternion yRot = Quaternion.Euler(0, Input.GetAxis("Mouse X"), 0);

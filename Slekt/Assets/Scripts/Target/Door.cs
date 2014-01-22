@@ -7,8 +7,9 @@ public class Door : Target {
 	public Material hoveredMaterial;
 
 
-	public bool isMoving = false;
-	public bool opening = true;
+
+	private bool isMoving = false;
+	private bool opening = true;
 
 	public float moveHeight = 4.0f;
 	private float targetHeight;
@@ -25,7 +26,7 @@ public class Door : Target {
 
 		//move and stop when at target
 		if(opening){
-			transform.position = transform.position + 0.05f * Vector3.up;
+			rigidbody.MovePosition(transform.position + 0.05f * Vector3.up);
 
 			if(transform.position.y >= targetHeight){
 				isMoving = false;
@@ -34,7 +35,7 @@ public class Door : Target {
 		}
 		else
 		{
-			transform.position = transform.position + 0.05f * Vector3.down; 
+			rigidbody.MovePosition(transform.position + 0.05f * Vector3.down); 
 			
 			if(transform.position.y <= targetHeight){
 				isMoving = false;
